@@ -81,7 +81,8 @@ bool leerArchivoWiFi(fs::FS &fs, const char * path){
 
     File file = fs.open(path);
     if(!file){
-        Serial.println("Failed to open file for reading");
+        Serial.print("ERROR: No se pudo encontrar el archivo ");
+        Serial.println(path);
         return false;
     }
     int lineas = 0;
@@ -113,17 +114,6 @@ bool inicializarSd(){
     if(cardType == CARD_NONE){
         Serial.println("Error: No hay tarjeta SD en el lector");
         return false;
-    }
-
-    Serial.print("Tipo de tarjeta SD: ");
-    if(cardType == CARD_MMC){
-        Serial.println("MMC");
-    } else if(cardType == CARD_SD){
-        Serial.println("SDSC");
-    } else if(cardType == CARD_SDHC){
-        Serial.println("SDHC");
-    } else {
-        Serial.println("UNKNOWN");
     }
 
     uint64_t cardSize = SD.cardSize() / (1024 * 1024);
