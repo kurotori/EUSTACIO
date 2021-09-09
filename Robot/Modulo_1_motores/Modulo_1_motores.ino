@@ -16,17 +16,15 @@ int MIzq2=5;  //IN2
 
 
 //Activar y Desactivar Motores
-void Motores(int valor){
-  digitalWrite(MDerAc,valor);
-  digitalWrite(MIzqAc,valor);
+void Motores(int mDer, int mIzq){
+  digitalWrite(MDerAc,mDer);
+  digitalWrite(MIzqAc,mIzq);
 }
 
-//Moverse Hacia Adelante
-void Adelante(int tiempo){
+//Moverse Hacia Atras
+void Atras(int tiempo){
   //Activamos motores
-  Motores(1);
-//  digitalWrite(MDerAc,HIGH);
-//  digitalWrite(MIzqAc,HIGH);
+  Motores(1,1);
   //Motor Derecho hacia adelante
   digitalWrite(MDer1,HIGH);
   digitalWrite(MDer2,LOW);
@@ -36,12 +34,27 @@ void Adelante(int tiempo){
   //Tiempo de Espera
   delay(tiempo);
   //Detener Motores y Señales
-  Motores(0);
-//  digitalWrite(MDerAc,LOW);
-//  digitalWrite(MIzqAc,LOW);
+  Motores(0,0);
   digitalWrite(MDer1,LOW);
   digitalWrite(MIzq1,LOW);
 }
+
+//Moverse Hacia Adelante
+void Adelante(int tiempo){
+  //Activamos motores
+  Motores(1,1);
+  //Motor Derecho hacia adelante
+  digitalWrite(MDer1,LOW);
+  //Motor Izquierdo hacia adelante
+  digitalWrite(MIzq1,LOW);
+  //Tiempo de Espera
+  delay(tiempo);
+  //Detener Motores y Señales
+  Motores(0,0);
+  digitalWrite(MDer1,LOW);
+  digitalWrite(MIzq1,LOW);
+}
+
 
 
 
@@ -63,4 +76,5 @@ void loop() {
   Adelante(1000);
   digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
+  Atras(1000);
 }
