@@ -1,4 +1,7 @@
-
+/*Detalle del circuito: 
+ * https://www.tinkercad.com/things/4gV3lNH63yU-conexion-nano-l298p-sparkfun-ardumoto-proyecto-eustacio 
+ * VER NOTAS en TinkerCad para detalle de conexiones
+*/
 //Motor Derecho
 
 int MDerAc=9; //ENA
