@@ -70,7 +70,7 @@ void conectarWifi(const char* ssid, const char* pass){
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
     
-    return WiFi.status();
+    //return WiFi.status();
 }
 
 
@@ -142,18 +142,19 @@ void setup() {
     const char* ssid;
     const char* pass;
     
-    if( !inicializarSd() ){
+    if( inicializarSd() ){
         if( leerArchivoWiFi(SD,"/wifi.txt" )){
+          Serial.println("Leyendo datos del archivo...");
           ssid = datosW[0].c_str();
           pass = datosW[1].c_str();
         }
         else{
-          
+          Serial.println("ERROR: no se pudo leer los datos del archivo");
         }
     }
     else{
       while(true){
-          digitalWrite(LED_PIN_G, !digitalRead(LED_PIN_R));
+          digitalWrite(LED_PIN_G, !digitalRead(LED_PIN_G));
           delay(500);
         }
     }
